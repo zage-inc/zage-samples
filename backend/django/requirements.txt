@@ -1,0 +1,8 @@
+django
+djangorestframework
+django-cors-headers
+django-extensions
+Werkzeug
+pyOpenSSL
+requests
+zage

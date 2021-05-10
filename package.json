@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "name": "zage-samples",
+  "private": true,
+  "scripts": {
+    "setup:backend": "cd backend/django && pip3 install -r requirements.txt && cd ../../",
+    "setup:frontend": "cd frontend/react && npm ci && cd ../../",
+    "setup": "npm run setup:backend && npm run setup:frontend",
+    "start": "npx concurrently \"cd frontend/react && npm start\" \"cd backend/django/ && python3 -u manage.py runserver_plus --cert crt\""
+  }
+}
