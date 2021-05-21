@@ -82,12 +82,20 @@ We provide the options to send an `on_success_endpoint` and `metadata` when you 
   "paymentId": "py_123abc",
   "amount": 1000,
   "userId": "uid_123abc",
-  "metadata": { "a": "b", "c": "d" },
+  "metadata": "{ \"a\": \"b\", \"c\": \"d\" }",
   "token": "test-token-111"
 }
 ```
 
+(please note that metadata is returned as a **JSON string**)
+
+This request will include a header `ZAGE_SECRET_KEY` with the token created when initating the payment so that the webhook can verify the legitimacy of the request.
+
 **IMPORTANT**: If the `on_success_endpoint` is provided while creating the token but we are unable to make the **POST** request, we will **still complete the payment and call onComplete on the client-side**.
+
+### Returning Data to the frontend
+
+If the webhook returns a payload with a 200 status code after the POST request, Zage will pass that information back to the `onComplete` method on the client side. `onComplete` is only called once the payment has been completed via Zage and the webhook has been called, so the frontend can ensure the transaction is complete at this point.
 
 ## Flow
 

@@ -1,7 +1,7 @@
 import zage
 from django.http import JsonResponse
 from rest_framework.views import APIView
-from django.http.response import HttpResponse
+import time
 
 # required: provide secret key before creating a payment token
 zage.secret_key = "zage-test-key"
@@ -42,5 +42,9 @@ class CreateToken(APIView):
 # example on success endpoint: in this case it will simply print the payload returned once the transaction is completed
 class OnSuccess(APIView):
     def post(self, request):
+        # can ensure this is a legitmate post by checking the header ZAGE_SECRET_KEY which be the token for the payment
+        # django appends HTTP_ to the header name
+        print(request.META.get("HTTP_ZAGE_SECRET_KEY"))
         print(request.data, flush=True)
-        return HttpResponse("ok")
+        # define a custom response to pass back to the frontend
+        return JsonResponse({"id": "abc123", "timestamp": time.time()})

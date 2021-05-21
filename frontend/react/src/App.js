@@ -7,7 +7,12 @@ const PUBLIC_KEY = "zage-test-key";
 const CREATE_TOKEN_SAMPLE_BACKEND = "https://localhost:8000/zage/create-token/";
 
 function App() {
-  const onComplete = () => alert("payment_successfully_completed");
+  const onComplete = (responsePayload) =>
+    alert(
+      `payment completed, backend returned payload: ${JSON.stringify(
+        responsePayload
+      )}`
+    );
 
   const onExit = () => alert("user_exited_prematurely");
 
