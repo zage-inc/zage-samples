@@ -89,9 +89,9 @@ We provide the options to send an `on_success_endpoint` and `metadata` when you 
 
 (please note that metadata is returned as a **JSON string**)
 
-This request will include a header `ZAGE_SECRET_KEY` with the token created when initating the payment so that the webhook can verify the legitimacy of the request.
+This request will include a header `ZAGE-SECRET-KEY` which will have the value of your secret key so that the webhook can verify the legitimacy of the request.
 
-**IMPORTANT**: If the `on_success_endpoint` is provided while creating the token but we are unable to make the **POST** request, we will **still complete the payment and call onComplete on the client-side**.
+**IMPORTANT**: If the `on_success_endpoint` is provided while creating the token but we are unable to make the **POST** request, we will **not complete the payment and call onComplete on the client-side**.
 
 ### Returning Data to the frontend
 
