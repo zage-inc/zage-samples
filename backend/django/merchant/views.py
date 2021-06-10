@@ -44,7 +44,7 @@ class OnSuccess(APIView):
     def post(self, request):
         # can ensure this is a legitmate post by checking the header ZAGE_SECRET_KEY which be the token for the payment
         # django appends HTTP_ to the header name
-        print(request.META.get("HTTP_ZAGE-SECRET-KEY"))
+        print(request.META.get("HTTP_ZAGE_SECRET_KEY"))
         print(request.data, flush=True)
         # define a custom response to pass back to the frontend
         return JsonResponse({"id": "abc123", "timestamp": time.time()})
