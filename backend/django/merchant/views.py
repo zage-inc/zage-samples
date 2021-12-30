@@ -4,7 +4,8 @@ from rest_framework.views import APIView
 import time
 
 # required: provide secret key before creating a payment token
-zage.secret_key = "zage-test-key"
+zage.public_key = "sandbox_key_"
+zage.secret_key = "sandbox_key_"
 
 
 class CreateToken(APIView):
@@ -20,12 +21,14 @@ class CreateToken(APIView):
                             payment will still go through.
             metadata (dict) [Optional]: Any internal metadata to be included in the payload
                             which will be returned via the POST to the on success endpoint.
+            user_id (str) [Optional]: A stable identifier you wish to associate with a given user.
+                            If they have paid on your site before this will make Zage a one click checkout.
 
         Returns:
             json_response_obj (dict): a dict with contents a json object with { token: [token] }
 
         """
-        json_response_obj = zage.Payment.create_token(
+        payment_token = zage.Payments.create_token(
             amount=1000,  # in cents (i.e. this is 10 dollars)
             on_success_endpoint="https://zage.app/on_success",  # optional: backend endpoint to be called on completion
             metadata={
@@ -36,7 +39,8 @@ class CreateToken(APIView):
 
         # return object to the frontend with payload: { token: [token] }
         # this token contains no sensitive information on the transaction
-        return JsonResponse(json_response_obj)
+        print(payment_token)
+        return JsonResponse({"token": payment_token})
 
 
 # example on success endpoint: in this case it will simply print the payload returned once the transaction is completed

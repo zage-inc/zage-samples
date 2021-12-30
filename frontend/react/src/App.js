@@ -3,8 +3,8 @@ import { loadZage } from "@zage/zage-js"; // zage js package
 
 import Button from "react-bootstrap/Button";
 
-const PUBLIC_KEY = "zage-test-key";
-const CREATE_TOKEN_SAMPLE_BACKEND = "https://localhost:8000/zage/create-token/";
+const PUBLIC_KEY = "sandbox_key_";
+const CREATE_TOKEN_SAMPLE_BACKEND = "https://127.0.0.1:8000/zage/create-token/";
 
 function App() {
   const onComplete = (responsePayload) =>
