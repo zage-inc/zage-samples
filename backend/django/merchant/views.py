@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 import time
 
 # required: provide secret key before creating a payment token
-zage.public_key = "sandbox_key_"
-zage.secret_key = "sandbox_key_"
+zage.public_key = "sandbox_key_75jxlee0j1io5vit"
+zage.secret_key = "sandbox_key_ehbl1he7e8dgdpq1"
 
 
 class CreateToken(APIView):
@@ -30,7 +30,7 @@ class CreateToken(APIView):
         """
         payment_token = zage.Payments.create_token(
             amount=1000,  # in cents (i.e. this is 10 dollars)
-            on_success_endpoint="https://zage.app/on_success",  # optional: backend endpoint to be called on completion
+            on_success_endpoint="http://apollo.eba-wpmky95d.us-west-2.elasticbeanstalk.com/zage/on-success",  # optional: backend endpoint to be called on completion
             metadata={
                 "a": "b",
                 "c": "d",
