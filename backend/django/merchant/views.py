@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 import time
 
 # required: provide secret key before creating a payment token
-zage.public_key = "sandbox_key_jm6ztiyau6swh3ag"
-zage.secret_key = "sandbox_key_n812x482fm0vejzz"
+zage.public_key = "sandbox_key_"  # ADD PUBLIC KEY
+zage.secret_key = "sandbox_key_"  # ADD PRIVATE KEY
 
 
 class CreateToken(APIView):
