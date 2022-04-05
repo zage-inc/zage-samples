@@ -16,6 +16,11 @@ function App() {
 
   const onExit = () => alert("user_exited_prematurely");
 
+  const onInfoClick = async () => {
+      const zage = await loadZage(PUBLIC_KEY);
+      zage.openModal();
+  }
+
   const onPayClick = async () => {
     /** this is your backend endpoint that will create the token
     with the correct amount (in cents) to charge the user
@@ -48,6 +53,14 @@ function App() {
 
   return (
     <div className="main">
+      <Button
+          onClick={onInfoClick}
+          variant="success"
+          size="lg"
+          className="zage-button"
+      >
+        Info Modal
+      </Button>
       <Button
         onClick={onPayClick}
         variant="success"
