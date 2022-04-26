@@ -3,7 +3,7 @@ import { loadZage } from "@zage/zage-js"; // zage js package
 
 import Button from "react-bootstrap/Button";
 
-const PUBLIC_KEY = ""; // ADD PUBLIC KEY
+const PUBLIC_KEY = "sandbox_key_75jxlee0j1io5vit"; // ADD PUBLIC KEY
 const CREATE_TOKEN_SAMPLE_BACKEND = "https://127.0.0.1:8000/zage/create-token/";
 
 function App() {
